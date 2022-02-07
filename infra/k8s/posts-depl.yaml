@@ -1,0 +1,33 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: posts-depl
+spec: #this the spec of the deployment
+  replicas: 1
+  selector:           #this to till the deployment where exactly are the pods or helps it finds them
+    matchLabels:
+      app: posts
+  template:       #when we say template here is the pad config
+    metadata:
+      labels:
+        app: posts
+    spec:      #this is the spec of  the pad
+      containers:
+        - name: posts
+          image: jerry377/posts:latest
+--- # you can create more than one object inside the same config file but why because the clusterIP service is to just for the event-bust
+#deployment so we can add it in the same file
+apiVersion: v1
+kind: Service
+metadata:
+  name: posts-clusterip-srv #note that in the other service event-bust we named it event-bus-srv but we can not do that here because we have a
+  # a node port with the same name
+spec:
+  selector:
+    app: posts
+  type: ClusterIP #you could not add it and it will be the default
+  ports:
+    - name: posts
+      protocol: TCP
+      port: 4000
+      targetPort: 4000

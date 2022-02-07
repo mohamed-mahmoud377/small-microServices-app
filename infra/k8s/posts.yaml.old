@@ -1,0 +1,10 @@
+#this for creating a pad and this just for only one pad and usually we will use deployment instead so we can manage multiple pod of the same service
+
+apiVersion: v1
+kind: Pod
+metadata:
+  name: posts
+spec:
+  containers:
+    - name: posts
+      image: jerry/posts:0.0.1
