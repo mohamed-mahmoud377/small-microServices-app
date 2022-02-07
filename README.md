@@ -1,4 +1,4 @@
-# small-microServices-app-for-create-posts-and-comments-with-react-and-express
+# small microServices app for create posts and- omments with react and express
 
 My first time building a mirco service applicaion ,So I just fouced in the communcation betweent servcies and the deployment. <br>
 I used asynchronous communcation between services. <br>
